@@ -17,21 +17,19 @@ while True:
     try:
         opcion = int(entrada)
     except ValueError:
-        print("⚠️ Error: Debe introducir un número entero.")
+        print("Error: Debe introducir un número entero.")
         continue
     
     if opcion == 1:
         print("\n[OPCIÓN 1] Iniciando proceso de auditoría...")
-        iter_str = input("Introduce iteraciones: ").strip()
         try:
-            iteraciones = int(iter_str)
             num_iter = int(input("Introduce número de iteraciones: ").strip())
             if num_iter <= 0:
-                print("⚠️ El valor debe ser mayor que cero.")
+                print("El valor debe ser mayor que cero.")
             else:
-                print(f"✔️ Configurado con éxito para {num_iter} iteraciones.")
+                print(f"Configurado con éxito para {num_iter} iteraciones.")
         except ValueError:
-            print("⚠️ Error de formato: debe introducir un número entero.")
+            print("Error de formato: debe introducir un número entero.")
     
     elif opcion == 2:
         print("\n[OPCIÓN 2] Consultando registros históricos...")
