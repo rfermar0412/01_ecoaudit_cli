@@ -33,6 +33,11 @@ while True:
             print(f"\n Resultados calculados para '{proceso}':")
             print(f"Consumo total: {consumo:.2f} Wh")
             print(f"Huella de carbono estimada: {huella:.4f} g CO2")
+              # Guardado persistente en el archivo CSV
+            with open("auditorias.csv", mode="a", encoding="utf-8") as archivo:
+            # Escribimos los datos separados por comas y terminamos con salto de línea (\n)
+                    archivo.write(f"{proceso},{potencia},{horas},{num_iter},{consumo:.2f},{huella:.4f}\n")
+                    print("Registro guardado con éxito en 'auditorias.csv'.")
             if num_iter <= 0:
                 print("El valor debe ser mayor que cero.")
             else:
@@ -42,6 +47,15 @@ while True:
        
     elif opcion == 2:
         print("\n[OPCIÓN 2] Consultando registros históricos...")
+        print("\n================ HISTORIAL DE AUDITORÍAS ================")
+        try:
+            with open("auditorias.csv", mode="r", encoding="utf-8") as archivo:
+                contenido = archivo.read()
+            print(contenido)
+            pass # Comodín temporal para evitar errores de sintaxis en bloques vacíos. ¡Bórralo al escribir tu código!
+        except FileNotFoundError:
+            # Si el archivo NO existe en el disco duro, evitamos el bloqueo crítico y mostramos este aviso:
+            print("ℹ️ Aún no existen registros. Realiza una auditoría primero.")
    
     elif opcion == 3:
         print("\nSaliendo de EcoAudit CLI. ¡Hasta pronto!")
