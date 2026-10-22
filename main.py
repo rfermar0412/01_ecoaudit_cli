@@ -42,8 +42,6 @@ while True:
         except ValueError:
             print("Error de formato: debe introducir un número entero.")
         
-        
-    
     elif opcion == 2:
         print("\n[OPCIÓN 2] Consultando registros históricos...")
     
