@@ -33,6 +33,16 @@ while True:
             print(f"\n Resultados calculados para '{proceso}':")
             print(f"Consumo total: {consumo:.2f} Wh")
             print(f"Huella de carbono estimada: {huella:.4f} g CO2")
+            # SIMULACIÓN ITERATIVA PASO A PASO (PARA INSPECCIÓN EN DEPURADOR)
+            print("\nIniciando simulación ciclo a ciclo...")
+            consumo_ciclo = estimar_consumo_wh(potencia, horas, 1) # Consumo de un solo ciclo
+            consumo_acumulado = 0.0
+            ciclo = 1
+
+            while ciclo <= num_iter:
+                consumo_acumulado = consumo_acumulado + consumo_ciclo # <--- PONDRÉIS AQUÍ EL PUNTO ROJO
+                print(f" [Ciclo {ciclo}] Consumo acumulado parcial: {consumo_acumulado:.2f} Wh")
+                ciclo = ciclo + 1
               # Guardado persistente en el archivo CSV
             with open("auditorias.csv", mode="a", encoding="utf-8") as archivo:
             # Escribimos los datos separados por comas y terminamos con salto de línea (\n)
@@ -55,11 +65,11 @@ while True:
             pass # Comodín temporal para evitar errores de sintaxis en bloques vacíos. ¡Bórralo al escribir tu código!
         except FileNotFoundError:
             # Si el archivo NO existe en el disco duro, evitamos el bloqueo crítico y mostramos este aviso:
-            print("ℹ️ Aún no existen registros. Realiza una auditoría primero.")
+            print(" Aún no existen registros. Realiza una auditoría primero.")
    
     elif opcion == 3:
         print("\nSaliendo de EcoAudit CLI. ¡Hasta pronto!")
         break
    
     else:
-        print("⚠️ Opción no válida. Elija un número entre 1 y 3.")
+        print("Opción no válida. Elija un número entre 1 y 3.")
