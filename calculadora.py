@@ -11,3 +11,10 @@ def calcular_huella_co2(consumo_wh: float, factor_emision: float = 0.23) -> floa
     consumo_kwh = consumo_wh/1000
     emisiones = consumo_kwh*factor_emision
     return emisiones
+def clasificar_etiqueta_energetica(consumo_wh: float) -> str:
+    if consumo_wh < 500:
+        return "CLASE A (Eficiente)"
+    elif consumo_wh <= 2000:
+        return "CLASE B (Moderado)"
+    else:
+        return "CLASE C (Crítico)"

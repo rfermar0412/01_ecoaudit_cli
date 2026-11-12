@@ -1,4 +1,5 @@
 from calculadora import estimar_consumo_wh, calcular_huella_co2
+from calculadora import clasificar_etiqueta_energetica
 # =====================================================================
 # EcoAudit CLI - Módulo Principal
 # Autores: [Nombre Alumno 1] & [Nombre Alumno 2]
@@ -38,6 +39,8 @@ while True:
             consumo_ciclo = estimar_consumo_wh(potencia, horas, 1) # Consumo de un solo ciclo
             consumo_acumulado = 0.0
             ciclo = 1
+            etiqueta = clasificar_etiqueta_energetica(consumo)
+            print("Etiqueta energética:", etiqueta)
 
             while ciclo <= num_iter:
                 consumo_acumulado = consumo_acumulado + consumo_ciclo # <--- PONDRÉIS AQUÍ EL PUNTO ROJO
@@ -70,6 +73,5 @@ while True:
     elif opcion == 3:
         print("\nSaliendo de EcoAudit CLI. ¡Hasta pronto!")
         break
-   
     else:
         print("Opción no válida. Elija un número entre 1 y 3.")
